@@ -1,0 +1,60 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "title": "The Hunger Games",
+      "price": 10,
+      "writer" : "Suzanne Collins",
+      "category": { "title": "Fiction", "value": "fiction" },
+      "image": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1447303603l/2767052.jpg"
+    },
+    {
+      "id": 2,
+      "title": "Harry Potter and the Order of the Phoenix",
+      "price": 22.3,
+      "writer": "J.K. Rowling",
+      "category": { "title": "Fantasy", "value": "fantasy" },
+      "image": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1546910265l/2.jpg"
+    },
+    {
+      "id": 3,
+      "title": "Pride and Prejudice",
+      "price": 55.99,
+      "writer": "Jane Austen",
+      "category": { "title": "Romance", "value": "romance" },
+      "image": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1320399351l/1885.jpg"
+    }
+  ],
+  "categories": [
+    {
+      "title": "Fiction",
+      "value": "fiction"
+    },
+    {
+      "title": "Fantasy",
+      "value": "fantasy"
+    },
+    {
+      "title": "Romance",
+      "value": "Romance"
+    }
+  ],
+  "sortings": [
+    {
+      "title": "Price low to high",
+      "value": "price-asc",
+      "isDefault": true
+    },
+    {
+      "title": "Price high to low",
+      "value": "price-desc",
+      "isDefault": false
+    }
+  ],
+  "priceRanges": [
+    { "title": "Less than 10,00", "value": "0-10" },
+    { "title": "10,00 - 50,00", "value": "10-50" },
+    { "title": "50,00 - 100,00", "value": "50-100" },
+    { "title": "More than 100,00", "value": "100-max" }
+  ]
+}
