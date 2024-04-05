@@ -8,4 +8,4 @@
 - after done installing, click  npm run dev <br>
 - open localhost:3000<br>
   
-# Back End : https://github.com/dennis2908/bookstorenest </br>	node
+# Back End : https://github.com/dennis2908/bookstorenest
