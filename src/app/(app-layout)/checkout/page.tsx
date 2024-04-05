@@ -8,7 +8,7 @@ import { clearCart } from '@/cart/cart-actions';
 
 import { useEffect } from 'react';
 
-export default function CheckoutPage(context: { params: any }) {
+export default function CheckoutPage(context: { params: object }) {
   // useEffect(() => {
   //   const storeCall = async () => {
   //     setformData({
