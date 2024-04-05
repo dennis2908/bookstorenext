@@ -43,7 +43,7 @@ export default function CheckoutPage(context: { params: any }) {
         order: JSON.parse(context.params.searchParams.order),
       });
 
-      // location.href = '/search';
+      location.href = '/search';
     };
 
     getData();
