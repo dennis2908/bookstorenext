@@ -114,7 +114,7 @@ export default function CheckoutPage(context: Icontext) {
     .then(() => {
       location.href = '/search';
     })
-    .catch((e) => {
-      console.log(e);
+    .catch((error) => {
+      console.log(error);
     });
 }

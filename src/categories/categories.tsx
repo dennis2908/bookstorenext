@@ -14,7 +14,6 @@ export async function Categories() {
               href={routes.search({
                 query: { categories: [category.value] },
               })}
-              imageSrc={category.image}
               title={category.title}
             />
           </li>
