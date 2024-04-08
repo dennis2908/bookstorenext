@@ -5,6 +5,7 @@ import { PageTitle } from '@/common/page-title';
 import { Paper } from '@/common/paper';
 import { Section, SectionTitle } from '@/common/section';
 import { redirect } from 'next/navigation';
+import { Suspense } from 'react';
 
 export default async function CheckoutSuccessPage() {
   const cart = await getCart();
@@ -20,7 +21,9 @@ export default async function CheckoutSuccessPage() {
         <Section>
           <SectionTitle as="h2">Checkout Success</SectionTitle>
           <Paper>
-            <CheckoutSuccessMessage />
+            <Suspense>
+              <CheckoutSuccessMessage />
+            </Suspense>
           </Paper>
         </Section>
       </Container>
