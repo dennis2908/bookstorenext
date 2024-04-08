@@ -8,35 +8,30 @@ import { clearCart } from '@/cart/cart-actions';
 
 import type { IPayload } from '../../../interface/i-payload';
 
+import type { CartDetails } from '@/cart/cart-types';
+
 // import { useEffect } from 'react';
 
 interface Icontext {
-  params: IParams;
-}
-
-interface IParams {
   searchParams: IOrder;
 }
 
 interface IOrder {
-  cartItems: string[];
-  totalPrice: number;
-  totalCount: number;
+  order: string;
 }
 
 export default function CheckoutPage(context: Icontext) {
   interface postData {
     email: string;
     fullname: string;
-    total: number;
-    order: string[];
+    total?: number;
+    order: string;
   }
-
   type IState = {
     payload: IPayload;
   };
 
-  const payload = storeLogin.getState().payload as IState;
+  const payload = storeLogin.getState() as IState;
 
   // useEffect(() => {
   //   const storeCall = async () => {
@@ -102,12 +97,14 @@ export default function CheckoutPage(context: Icontext) {
 
     await clearCart();
   };
+  // console.log(2222, JSON.parse(context.searchParams.order).totalPrice);
 
+  const dataOrder = JSON.parse(context.searchParams.order) as CartDetails;
   const DataPost: postData = {
     email: payload.payload.authEmail,
     fullname: payload.payload.authFullName,
-    order: context.params.searchParams.cartItems,
-    total: context.params.searchParams.totalPrice,
+    order: context.searchParams.order,
+    total: dataOrder.totalPrice,
   };
 
   getData(DataPost)
