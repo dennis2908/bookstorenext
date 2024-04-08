@@ -5,7 +5,7 @@ import { Suspense } from 'react';
 
 export function CheckoutSuccessMessage() {
   return (
-    <Suspense>
+    <Suspense fallback={<div>Loading...</div>}>
       <div className="grid place-items-center gap-4 text-success-main">
         <CheckOutlinedIcon size={80} />
         <div className="text-center text-2xl font-semibold">
