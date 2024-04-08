@@ -1,6 +1,5 @@
 import type { NextLinkProps } from '@/routing/next-link';
 import { NextLink } from '@/routing/next-link';
-import Image from 'next/image';
 
 type CategoryLinkProps = Pick<NextLinkProps, 'href'> & {
   title: string;
