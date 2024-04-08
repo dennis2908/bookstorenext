@@ -5,7 +5,7 @@ import { useOnPathnameChange, useOnRouteChange } from '@/routing/routing-hooks';
 import { fadeIn } from '@/transitions/transition-utils';
 import * as RadixDialog from '@radix-ui/react-dialog';
 import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { Suspense, useState } from 'react';
 import { twJoin, twMerge } from 'tailwind-merge';
 import { Button } from './button';
 import { useIsMobile } from './common-hooks';
@@ -89,58 +89,60 @@ export function Drawer({
   );
 
   return (
-    <RadixDialog.Root open={isOpen} onOpenChange={setIsOpen}>
-      {trigger}
-      <AnimatePresence>
-        {isOpen && (
-          <RadixDialog.Portal
-            // To make `framer-motion` exit animation work.
-            forceMount
-          >
-            <RadixDialog.Overlay asChild>
-              <motion.div
-                {...fadeIn}
-                className="fixed inset-0 z-10 bg-black/20 backdrop-blur-md"
-              />
-            </RadixDialog.Overlay>
-            <RadixDialog.Content asChild>
-              <motion.div
-                className={twJoin(
-                  'fixed bottom-0 z-10 flex w-full flex-col bg-background-main focus:outline-none',
-                  'max-h-[80%] rounded-t-2xl sm:top-0 sm:max-h-none sm:max-w-xs sm:rounded-none sm:rounded-l-2xl',
-                  'after:absolute after:inset-x-0 after:top-full after:h-screen after:bg-background-dark sm:after:hidden',
-                  '[--y-to:0%] [--x-from:0] [--x-to:0] [--y-from:100%] sm:[--x-to:0%] sm:[--y-from:0] sm:[--y-to:0]',
-                  from === 'left'
-                    ? 'sm:left-0 sm:[--x-from:-100%]'
-                    : 'sm:right-0 sm:[--x-from:100%]',
-                )}
-                // Normally we can use `framer-motion` in a responsive way,
-                // by using CSS variables.
-                // Responsive Framer Motion with Tailwind CSS:
-                // https://www.youtube.com/watch?v=xSuxsfn13xg
-                // But, since there is a bug about using CSS variables with drag event,
-                // we used `useMediaQuery` hook and handled this in TSX instead of CSS.
-                // https://github.com/framer/motion/issues/2390
-                initial={isMobile ? { y: '100%' } : { x: '100%' }}
-                animate={isMobile ? { y: 0 } : { x: 0 }}
-                exit={isMobile ? { y: '100%' } : { x: '100%' }}
-                transition={{ duration: 0.3 }}
-                // To swipe to dismiss
-                drag={isMobile ? 'y' : false}
-                dragConstraints={{ top: 0, bottom: 0 }}
-                onDragEnd={(event, info) => {
-                  if (info.offset.y >= 100 || info.velocity.y >= 10) {
-                    setIsOpen(false);
-                  }
-                }}
-              >
-                {children}
-              </motion.div>
-            </RadixDialog.Content>
-          </RadixDialog.Portal>
-        )}
-      </AnimatePresence>
-    </RadixDialog.Root>
+    <Suspense>
+      <RadixDialog.Root open={isOpen} onOpenChange={setIsOpen}>
+        {trigger}
+        <AnimatePresence>
+          {isOpen && (
+            <RadixDialog.Portal
+              // To make `framer-motion` exit animation work.
+              forceMount
+            >
+              <RadixDialog.Overlay asChild>
+                <motion.div
+                  {...fadeIn}
+                  className="fixed inset-0 z-10 bg-black/20 backdrop-blur-md"
+                />
+              </RadixDialog.Overlay>
+              <RadixDialog.Content asChild>
+                <motion.div
+                  className={twJoin(
+                    'fixed bottom-0 z-10 flex w-full flex-col bg-background-main focus:outline-none',
+                    'max-h-[80%] rounded-t-2xl sm:top-0 sm:max-h-none sm:max-w-xs sm:rounded-none sm:rounded-l-2xl',
+                    'after:absolute after:inset-x-0 after:top-full after:h-screen after:bg-background-dark sm:after:hidden',
+                    '[--x-from:0] [--x-to:0] [--y-from:100%] [--y-to:0%] sm:[--x-to:0%] sm:[--y-from:0] sm:[--y-to:0]',
+                    from === 'left'
+                      ? 'sm:left-0 sm:[--x-from:-100%]'
+                      : 'sm:right-0 sm:[--x-from:100%]',
+                  )}
+                  // Normally we can use `framer-motion` in a responsive way,
+                  // by using CSS variables.
+                  // Responsive Framer Motion with Tailwind CSS:
+                  // https://www.youtube.com/watch?v=xSuxsfn13xg
+                  // But, since there is a bug about using CSS variables with drag event,
+                  // we used `useMediaQuery` hook and handled this in TSX instead of CSS.
+                  // https://github.com/framer/motion/issues/2390
+                  initial={isMobile ? { y: '100%' } : { x: '100%' }}
+                  animate={isMobile ? { y: 0 } : { x: 0 }}
+                  exit={isMobile ? { y: '100%' } : { x: '100%' }}
+                  transition={{ duration: 0.3 }}
+                  // To swipe to dismiss
+                  drag={isMobile ? 'y' : false}
+                  dragConstraints={{ top: 0, bottom: 0 }}
+                  onDragEnd={(event, info) => {
+                    if (info.offset.y >= 100 || info.velocity.y >= 10) {
+                      setIsOpen(false);
+                    }
+                  }}
+                >
+                  {children}
+                </motion.div>
+              </RadixDialog.Content>
+            </RadixDialog.Portal>
+          )}
+        </AnimatePresence>
+      </RadixDialog.Root>
+    </Suspense>
   );
 }
 
