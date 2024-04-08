@@ -15,17 +15,26 @@ async function getProductFilterOptions() {
   const filterOptions: ProductFilterOptions = {
     sortings: {
       title: 'Sorting',
-      options: sortings.map((option, i) => ({ ...option, order: `0_${i}` })),
+      options: sortings.map((option, i) => ({
+        ...option,
+        order: `0_${String(i + 0)}`,
+      })),
       filterKey: ProductFilterKey.SORTING,
     },
     categories: {
       title: 'Categories',
-      options: categories.map((option, i) => ({ ...option, order: `1_${i}` })),
+      options: categories.map((option, i) => ({
+        ...option,
+        order: `1_${String(i)}`,
+      })),
       filterKey: ProductFilterKey.CATEGORIES,
     },
     priceRanges: {
       title: 'Price',
-      options: priceRanges.map((option, i) => ({ ...option, order: `2_${i}` })),
+      options: priceRanges.map((option, i) => ({
+        ...option,
+        order: `2_${String(i)}`,
+      })),
       filterKey: ProductFilterKey.PRICE_RANGES,
     },
   };

@@ -8,15 +8,18 @@ import {
   DrawerTrigger,
 } from '@/common/drawer';
 import React, { useEffect, useState } from 'react';
+import type { IPayload } from '../interface/i-payload';
 import { storeLogin } from '../redux/store-login';
 import { Register } from './register';
+
 export function RegisterDrawer() {
   const [isClient, setIsClient] = useState('Register');
   const [disabled, setdisabled] = useState(false);
 
   useEffect(() => {
     function storeCall() {
-      if (storeLogin.getState().payload.authFullName) {
+      const payload = storeLogin.getState().payload as IPayload;
+      if (payload.authFullName) {
         setIsClient('You get 100 points');
         setdisabled(true);
       }

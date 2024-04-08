@@ -14,6 +14,8 @@ import { storeLogin } from '../redux/store-login';
 
 import { CapitalizeFirstLetter } from '../genFunctions/capitalize-first-letter';
 
+import type { IPayload } from '../interface/i-payload';
+
 type LayoutProps = React.PropsWithChildren;
 
 export function Layout({ children }: LayoutProps) {
@@ -32,10 +34,9 @@ export function LayoutHeader({ children }: LayoutHeaderProps) {
 
   useEffect(() => {
     function storeCall() {
-      if (storeLogin.getState().payload.authFullName) {
-        const name = CapitalizeFirstLetter(
-          storeLogin.getState().payload.authFullName,
-        );
+      const payload = storeLogin.getState().payload as IPayload;
+      if (payload.authFullName) {
+        const name = CapitalizeFirstLetter(payload.authFullName) as string;
         setIsClient(`Welcome, ${name}`);
       }
     }
