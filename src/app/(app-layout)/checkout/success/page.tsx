@@ -15,8 +15,8 @@ export default async function CheckoutSuccessPage() {
   }
 
   return (
-    <Suspense>
-      <main>
+    <main>
+      <Suspense>
         <PageTitle title="Success" />
         <Container maxWidth="sm" className="flex flex-col gap-4">
           <Section>
@@ -26,7 +26,7 @@ export default async function CheckoutSuccessPage() {
             </Paper>
           </Section>
         </Container>
-      </main>
-    </Suspense>
+      </Suspense>
+    </main>
   );
 }
