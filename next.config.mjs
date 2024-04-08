@@ -1,5 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  experimental: {
+    missingSuspenseWithCSRBailout: false,
+  },
   images: {
     // We set image as `unoptimized` to not exceed the
     // fair usage policy of vercel about image optimization.
@@ -8,9 +11,6 @@ const nextConfig = {
     unoptimized: true,
   },
   reactStrictMode: false,
-  experimental: {
-    missingSuspenseWithCSRBailout: false,
-  },
 };
 
 export default nextConfig;
