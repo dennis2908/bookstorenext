@@ -16,17 +16,17 @@ export default async function CheckoutSuccessPage() {
 
   return (
     <main>
-      <Suspense>
-        <PageTitle title="Success" />
-        <Container maxWidth="sm" className="flex flex-col gap-4">
-          <Section>
-            <SectionTitle as="h2">Checkout Success</SectionTitle>
+      <PageTitle title="Success" />
+      <Container maxWidth="sm" className="flex flex-col gap-4">
+        <Section>
+          <SectionTitle as="h2">Checkout Success</SectionTitle>
+          <Suspense>
             <Paper>
               <CheckoutSuccessMessage />
             </Paper>
-          </Section>
-        </Container>
-      </Suspense>
+          </Suspense>
+        </Section>
+      </Container>
     </main>
   );
 }
