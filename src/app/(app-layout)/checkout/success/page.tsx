@@ -5,6 +5,7 @@ import { PageTitle } from '@/common/page-title';
 import { Paper } from '@/common/paper';
 import { Section, SectionTitle } from '@/common/section';
 import { redirect } from 'next/navigation';
+import { Suspense } from 'react';
 
 export default async function CheckoutSuccessPage() {
   const cart = await getCart();
@@ -15,15 +16,17 @@ export default async function CheckoutSuccessPage() {
 
   return (
     <main>
-      <PageTitle title="Success" />
-      <Container maxWidth="sm" className="flex flex-col gap-4">
-        <Section>
-          <SectionTitle as="h2">Checkout Success</SectionTitle>
-          <Paper>
-            <CheckoutSuccessMessage />
-          </Paper>
-        </Section>
-      </Container>
+      <Suspense fallback={<div>Loading...</div>}>
+        <PageTitle title="Success" />
+        <Container maxWidth="sm" className="flex flex-col gap-4">
+          <Section>
+            <SectionTitle as="h2">Checkout Success</SectionTitle>
+            <Paper>
+              <CheckoutSuccessMessage />
+            </Paper>
+          </Section>
+        </Container>
+      </Suspense>
     </main>
   );
 }
