@@ -89,7 +89,7 @@ export function Drawer({
   );
 
   return (
-    <Suspense>
+    <Suspense fallback={<p>Loading feed...</p>}>
       <RadixDialog.Root open={isOpen} onOpenChange={setIsOpen}>
         {trigger}
         <AnimatePresence>

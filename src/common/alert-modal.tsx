@@ -4,8 +4,8 @@ import { useOnRouteChange } from '@/routing/routing-hooks';
 import { fadeIn } from '@/transitions/transition-utils';
 import * as RadixAlertDialog from '@radix-ui/react-alert-dialog';
 import { motion } from 'framer-motion';
-import { twJoin } from 'tailwind-merge';
 import { Suspense } from 'react';
+import { twJoin } from 'tailwind-merge';
 
 type AlertModalProps = React.PropsWithChildren<{
   isOpen: boolean;
@@ -24,7 +24,7 @@ export function AlertModal({
   });
 
   return (
-    <Suspense>
+    <Suspense fallback={<p>Loading feed...</p>}>
       <RadixAlertDialog.Root open={isOpen} onOpenChange={onIsOpenChange}>
         {trigger}
         <AnimatePresence>
