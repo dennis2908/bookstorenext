@@ -15,18 +15,18 @@ export default async function CheckoutSuccessPage() {
   }
 
   return (
-    <main>
-      <PageTitle title="Success" />
-      <Container maxWidth="sm" className="flex flex-col gap-4">
-        <Section>
-          <SectionTitle as="h2">Checkout Success</SectionTitle>
-          <Paper>
-            <Suspense>
+    <Suspense>
+      <main>
+        <PageTitle title="Success" />
+        <Container maxWidth="sm" className="flex flex-col gap-4">
+          <Section>
+            <SectionTitle as="h2">Checkout Success</SectionTitle>
+            <Paper>
               <CheckoutSuccessMessage />
-            </Suspense>
-          </Paper>
-        </Section>
-      </Container>
-    </main>
+            </Paper>
+          </Section>
+        </Container>
+      </main>
+    </Suspense>
   );
 }
