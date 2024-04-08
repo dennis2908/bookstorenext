@@ -110,7 +110,11 @@ export default function CheckoutPage(context: Icontext) {
     total: context.params.searchParams.totalPrice,
   };
 
-  getData(DataPost).then(() => {
-    location.href = '/search';
-  });
+  getData(DataPost)
+    .then(() => {
+      location.href = '/search';
+    })
+    .catch((e) => {
+      console.log(e);
+    });
 }
