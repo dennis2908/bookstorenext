@@ -85,15 +85,18 @@ export default function CheckoutPage(context: Icontext) {
   // }, [context, payload]);
 
   const getData = async (Data: postData) => {
-    await axios.post('http://127.0.0.1:8005/book', Data).then(() => {
-      storeLogin.dispatch({
-        type: 'CHANGE_STATE',
-        payload: {
-          authFullName: '',
-          authEmail: '',
-        },
+    const headers = { 'Content-Type': 'application/x-www-form-urlencoded' };
+    await axios
+      .post('https://bookstorenest.vercel.app/book/', Data, { headers })
+      .then(() => {
+        storeLogin.dispatch({
+          type: 'CHANGE_STATE',
+          payload: {
+            authFullName: '',
+            authEmail: '',
+          },
+        });
       });
-    });
 
     await clearCart();
   };
