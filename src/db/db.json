@@ -95,6 +95,39 @@
       "writer": "J.K. Rowling",
       "category": { "title": "Fantasy", "value": "fantasy" },
       "image": "https://i5.walmartimages.com/seo/Harry-Potter-and-the-Cursed-Child-Parts-One-and-Two-The-Official-Playscript-of-the-Original-West-End-Production-Paperback-9781338216660_a599af1b-6757-4687-8a98-2e056973c426.60050f610b5eaf4812436da4a7841c8c.jpeg?odnHeight=768&odnWidth=768&odnBg=FFFFFF"
+    },
+    {
+      "id": 13,
+      "title": "The Hunger Games : The Ballad of Songbirds and Snakes",
+      "price": 40,
+      "writer" : "Suzanne Collins",
+      "category": { "title": "Fiction", "value": "fiction" },
+      "image": "https://assets-prd.ignimgs.com/2023/09/20/hunger-games-the-ballad-of-songbirds-and-snakes-ver10-xlg-button-1695239972434.jpg"
+    },
+    {
+      "id": 14,
+      "title": "The Hunger Games : Catching Fire",
+      "price": 50,
+      "writer" : "Suzanne Collins",
+      "category": { "title": "Fiction", "value": "fiction" },
+      "image": "https://m.media-amazon.com/images/I/91QBeFNDJhL._AC_UF1000,1000_QL80_.jpg"
+    },
+    {
+      "id": 15,
+      "title": "The Hunger Games : Mockingjay",
+      "price": 45,
+      "writer" : "Suzanne Collins",
+      "category": { "title": "Fiction", "value": "fiction" },
+      "image": "https://cdn.gramedia.com/uploads/items/9789792278439_mockingjay_cu_20.jpg"
+    },
+    
+    {
+      "id": 35,
+      "title": "Gregor the Overlander",
+      "price": 45,
+      "writer" : "Suzanne Collins",
+      "category": { "title": "Fiction", "value": "fiction" },
+      "image": "https://m.media-amazon.com/images/I/61wtCsRtAML._SL500_.jpg"
     }
   ],
   "categories": [
